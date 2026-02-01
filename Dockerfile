@@ -13,4 +13,5 @@ COPY frontend ./frontend
 
 EXPOSE 10000
 
-CMD sh -c "node backend/server.js & npx serve frontend -l 10000"
+# Run a single Express server that serves API and static frontend
+CMD ["node", "backend/server.js"]

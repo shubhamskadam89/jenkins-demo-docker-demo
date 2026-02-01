@@ -28,8 +28,11 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-id-super30') {
-                        docker.image("${IMAGE_NAME}:${IMAGE_TAG}").push()
-                        docker.image("${IMAGE_NAME}:${IMAGE_TAG}").push("latest") // optional
+                        def img = docker.image("${IMAGE_NAME}:${IMAGE_TAG}")
+                        img.push()
+                        if (IMAGE_TAG != 'latest') {
+                            img.push('latest')
+                        }
                     }
                 }
             }
