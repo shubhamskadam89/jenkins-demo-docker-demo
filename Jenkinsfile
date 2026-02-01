@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "shubhamskadam89/growgrade-combined:latest" // lowercase is safer
+        IMAGE_NAME = "shubhamskadam89/growgrade-combined" // lowercase is safer
         IMAGE_TAG = "latest"
     }
 
