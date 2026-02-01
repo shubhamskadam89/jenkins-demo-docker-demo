@@ -10,7 +10,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'docker-demo', url: ''
+                git branch: 'main', url: 'git@github.com:shubhamskadam89/jenkins-demo-docker-demo.git'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-id-super30') {
                         docker.image("${IMAGE_NAME}:${IMAGE_TAG}").push()
                         docker.image("${IMAGE_NAME}:${IMAGE_TAG}").push("latest") // optional
                     }
